@@ -1,20 +1,44 @@
-TensorFlow Neural Network Benchmark: Architecture & Activation Analysis
+🚀 DEEP LEARNING BENCHMARK: FNN Architecture Optimization
 
-This repository contains the complete project for a deep learning benchmark study on house price regression, focusing on Feedforward Neural Network (FNN) architecture optimization using TensorFlow/Keras.
+Project Title: TensorFlow Neural Network Benchmark: Architecture & Activation Analysis
 
-🎯 Project Objective
+This repository documents a comprehensive study designed to break the performance barrier of simple hand-coded models and determine the optimal architecture for accurate house price prediction using TensorFlow/Keras.
 
-The goal of this study was to empirically determine the optimal configuration for a regression task by systematically testing the effect of three critical hyperparameters on model performance ($\text{R}^2$):
+🎯 THE CHALLENGE: Performance vs. Simplicity
 
-Activation Function (e.g., LeakyReLU, ReLU, GELU)
+The central goal was to escape the failure mode of basic Gradient Descent (as seen in prior assignments, resulting in negative $\text{R}^2$) and achieve industry-standard predictive accuracy ($\text{R}^2 > 0.8$).
 
-Network Depth (Number of hidden layers)
+The Benchmark Grid
 
-Network Width (Neurons per layer)
+We trained 54 unique Feedforward Neural Networks (FNNs) across a $6 \times 3 \times 3$ grid, holding the Adam optimizer fixed to isolate the impact of structure.
 
-📈 Key Findings & Optimal Configuration
+Factor
 
-The benchmark involved training 54 unique models ($6 \text{ Activations} \times 3 \text{ Depths} \times 3 \text{ Widths}$) under fixed optimization (Adam optimizer).
+Test Cases
+
+Optimal Configuration
+
+Activation
+
+LeakyReLU, ReLU, GELU, Swish, ELU, SELU
+
+LeakyReLU
+
+Depth
+
+1, 2, 3 hidden layers
+
+Depth 3
+
+Width
+
+8, 16, 32 neurons per layer
+
+Width 32
+
+🥇 KEY FINDINGS: Convergence Achieved
+
+The benchmark successfully identified the high-complexity, optimized model required for convergence.
 
 Metric
 
@@ -24,27 +48,27 @@ Result
 
 Overall Best Model
 
-$\text{D}=3, \text{W}=32$ with LeakyReLU
+3 Layers, 32 Neurons, LeakyReLU
 
 $\mathbf{\text{R}^2 = 0.835}$
 
-Best Architecture
-
-Depth 3, Width 32
-
-Maximum complexity was required for stable and accurate convergence.
-
-Comparative $\text{R}^2$
+Convergence Success
 
 Keras (A3) vs. NumPy (A2)
 
-Keras achieved $\mathbf{0.835}$; NumPy achieved $\mathbf{-4.87}$.
+Keras achieved $\mathbf{0.835}$; NumPy achieved $\mathbf{-4.87}$
+
+Error Reduction
+
+Keras $\text{MSE}$ vs. NumPy $\text{MSE}$
+
+Keras reduced prediction error by over 35X.
 
 Conclusion on Optimization
 
-The success of this project hinged on using the Adam optimizer and Early Stopping in Keras, which enabled the model to reduce the prediction error ($\text{MSE}$) by over 35 times compared to the high loss incurred by simpler, hand-coded Gradient Descent implementations.
+The $\text{R}^2$ of $0.835$ confirms the successful application of the Adam optimizer and Early Stopping, proving that advanced tooling is non-negotiable for finding high-quality solutions, even when dealing with relatively simple datasets.
 
-📂 Repository Contents
+📂 REPOSITORY CONTENTS
 
 File / Folder
 
@@ -52,27 +76,27 @@ Description
 
 Feedforward_NeuralNetwork_Code.py
 
-The main Python script that executes the entire 54-model benchmark, including dynamic model creation, training, and metrics logging.
+The Core Engine: Python script executing the entire 54-model dynamic benchmark.
 
 feedforward_benchmark_results.csv
 
-Raw output data for all 54 model runs, containing configuration, runtime, Test $\text{MSE}$, and Test $\text{R}^2$ for detailed analysis.
+Raw Data Proof: Complete output of all 54 runs (Config, $\text{MSE}$, $\text{R}^2$, Runtime).
+
+
 
 figures/
 
-Directory containing all generated visualizations: Heatmaps (Depth vs. Width MSE) and the $\text{R}^2$ Bar Chart comparing activation performance.
+Visual Evidence: Contains all generated visualizations (Heatmaps, $\text{R}^2$ Bar Chart, Loss Curves).
 
 house_prices_dataset.csv
 
-The standardized 3-feature input dataset used across the entire project lifecycle.
+The standardized 3-feature input dataset.
 
-🚀 Getting Started
+🚀 GETTING STARTED
 
 Clone the Repository:
 
 git clone [https://github.com/usman2ki/TensorFlow_Benchmark_NeuralNetwork.git](https://github.com/usman2ki/TensorFlow_Benchmark_NeuralNetwork.git)
 
-
-Install Dependencies: Ensure you have Python, TensorFlow, Keras, NumPy, pandas, and scikit-learn installed.
 
 Run the Benchmark: Execute the primary Python script (Feedforward_NeuralNetwork_Code.py) to reproduce the results.
